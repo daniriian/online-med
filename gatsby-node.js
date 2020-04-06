@@ -1,12 +1,12 @@
-const path = require("path");
+const path = require('path');
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const productTemplate = path.resolve("src/templates/product.jsx");
-    const tagPage = path.resolve("src/components/tags/tags.jsx");
-    const tagProducts = path.resolve("src.templates/tag.jsx");
+    const productTemplate = path.resolve('src/templates/product.jsx');
+    const tagPage = path.resolve('src/components/tags/tags.jsx');
+    const tagProducts = path.resolve('src/templates/tag.jsx');
 
     resolve(
       graphql(`
@@ -43,9 +43,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
         });
 
-        console.log(productsByTag);
         const tags = Object.keys(productsByTag);
-        console.log(tags);
 
         createPage({
           path: `/tags`,
@@ -53,6 +51,20 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             tags: tags.sort(),
           },
+        });
+
+        //create tags
+        tags.forEach((tagName) => {
+          const products = productsByTag[tagName];
+
+          createPage({
+            path: `/tags/${tagName}`,
+            component: tagProducts,
+            context: {
+              products,
+              tagName,
+            },
+          });
         });
 
         //create products
