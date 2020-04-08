@@ -1,14 +1,16 @@
-import React from 'react';
-import { graphql } from 'gatsby';
+import React from "react";
+import { graphql } from "gatsby";
+import Img from "gatsby-image";
 
-import TagsBlock from '../components/TagsBlock';
+import TagsBlock from "../components/TagsBlock";
 
-import './product.scss';
-import './product_responsive.scss';
+import "./product.scss";
+import "./product_responsive.scss";
 
-const Product = ({ data }) => {
+const Product = ({ data, pageContext }) => {
   const fdata = data.markdownRemark;
-  console.log(data);
+  console.log(data.allFile.edges[0].node.childImageSharp.fluid);
+
   return (
     <div>
       <h1>{data.markdownRemark.frontmatter.title}</h1>
@@ -27,7 +29,11 @@ const Product = ({ data }) => {
             <div className="col-lg-6">
               <div className="details_image">
                 <div className="details_image_large">
-                  <img src="content/images/details_1.jpg" alt="" />
+                  {/* <img src="content/images/details_1.jpg" alt="" /> */}
+                  <Img
+                    fluid={data.allFile.edges[0].node.childImageSharp.fluid}
+                    alt=""
+                  />
                   <div className="product_extra product_new">
                     <a href="categories.html">NOU</a>
                   </div>
@@ -185,18 +191,18 @@ const Product = ({ data }) => {
 export default Product;
 
 export const query = graphql`
-  query($pathSlug: String!) {
+  query($pathSlug: String!, $directory: String!) {
     allFile(
-      filter: {
-        ext: { in: [".jpg", ".png"] }
-        relativeDirectory: { eq: $pathSlug }
-      }
+      filter: { ext: { in: [".jpg", ".png"] }, dir: { eq: $directory } }
     ) {
       edges {
         node {
-          id
-          ext
           relativePath
+          childImageSharp {
+            fluid(maxWidth: 400, maxHeight: 250) {
+              ...GatsbyImageSharpFluid
+            }
+          }
         }
       }
     }
