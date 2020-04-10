@@ -1,23 +1,27 @@
-import React from "react";
-import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import React, { useState, useEffect } from 'react';
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
-import TagsBlock from "../components/TagsBlock";
+import TagsBlock from '../components/TagsBlock';
 
-import "./product.scss";
-import "./product_responsive.scss";
+import './product.scss';
+import './product_responsive.scss';
 
 const Product = ({ data, pageContext }) => {
   const fdata = data.markdownRemark;
-  console.log(data.allFile.edges[0].node.childImageSharp.fluid);
+  // console.log(data.allFile.edges);
+
+  const [activeThumb, setActiveThumb] = useState(0);
+
+  const handleClick = (index) => {
+    setActiveThumb(index);
+  };
 
   return (
     <div>
       <h1>{data.markdownRemark.frontmatter.title}</h1>
       <TagsBlock list={data.markdownRemark.frontmatter.tags || []} />
-      <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}></div>
-
-      {/*------------------------------*/}
+      {/* <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}></div> */}
 
       {/*Product Details*/}
 
@@ -29,40 +33,33 @@ const Product = ({ data, pageContext }) => {
             <div className="col-lg-6">
               <div className="details_image">
                 <div className="details_image_large">
-                  {/* <img src="content/images/details_1.jpg" alt="" /> */}
                   <Img
-                    fluid={data.allFile.edges[0].node.childImageSharp.fluid}
-                    alt=""
+                    fluid={
+                      data.allFile.edges[activeThumb].node.childImageSharp.fluid
+                    }
+                    alt={data.markdownRemark.frontmatter.title}
                   />
                   <div className="product_extra product_new">
                     <a href="categories.html">NOU</a>
                   </div>
                 </div>
                 <div className="details_image_thumbnails d-flex flex-row align-items-start justify-content-between">
-                  <div
-                    className="details_image_thumbnail active"
-                    data-image="content/images/details_1.jpg"
-                  >
-                    <img src="images/details_1.jpg" alt="" />
-                  </div>
-                  <div
-                    className="details_image_thumbnail"
-                    data-image="images/details_2.jpg"
-                  >
-                    <img src="images/details_2.jpg" alt="" />
-                  </div>
-                  <div
-                    className="details_image_thumbnail"
-                    data-image="images/details_3.jpg"
-                  >
-                    <img src="images/details_3.jpg" alt="" />
-                  </div>
-                  <div
-                    className="details_image_thumbnail"
-                    data-image="images/details_4.jpg"
-                  >
-                    <img src="images/details_4.jpg" alt="" />
-                  </div>
+                  {data.allFile.edges.map((edge, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className={`details_image_thumbnail ${
+                          index === activeThumb ? 'active' : ''
+                        }`}
+                        onClick={() => handleClick(index)}
+                      >
+                        <Img
+                          fluid={edge.node.childImageSharp.fluid}
+                          alt={data.markdownRemark.frontmatter.title}
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -82,7 +79,7 @@ const Product = ({ data, pageContext }) => {
                 <div className="details_text">
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: data.markdownRemark.html,
+                      __html: data.markdownRemark.excerpt,
                     }}
                   ></p>
                 </div>
@@ -167,14 +164,11 @@ const Product = ({ data, pageContext }) => {
                 </div>
               </div>
               <div className="description_text">
-                <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua. Phasellus id nisi quis justo
-                  tempus mollis sed et dui. In hac habitasse platea dictumst.
-                  Suspendisse ultrices mauris diam. Nullam sed aliquet elit.
-                  Mauris consequat nisi ut mauris efficitur lacinia.
-                </p>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: data.markdownRemark.html,
+                  }}
+                ></p>
               </div>
             </div>
           </div>
@@ -199,7 +193,7 @@ export const query = graphql`
         node {
           relativePath
           childImageSharp {
-            fluid(maxWidth: 400, maxHeight: 250) {
+            fluid(maxWidth: 1000, maxHeight: 1000) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -208,6 +202,7 @@ export const query = graphql`
     }
     markdownRemark(frontmatter: { path: { eq: $pathSlug } }) {
       html
+      excerpt(pruneLength: 120)
       frontmatter {
         path
         tags

@@ -1,12 +1,12 @@
-const path = require("path");
+const path = require('path');
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const productTemplate = path.resolve("src/templates/product.jsx");
-    const tagPage = path.resolve("src/components/tags/tags.jsx");
-    const tagProducts = path.resolve("src/templates/tag.jsx");
+    const productTemplate = path.resolve('src/templates/product.jsx');
+    const tagPage = path.resolve('src/components/tags/tags.jsx');
+    const tagProducts = path.resolve('src/templates/tag.jsx');
 
     resolve(
       graphql(`
@@ -20,6 +20,7 @@ exports.createPages = ({ graphql, actions }) => {
                   title
                 }
                 html
+                excerpt(pruneLength: 20)
                 parent {
                   ... on File {
                     dir
@@ -77,8 +78,6 @@ exports.createPages = ({ graphql, actions }) => {
 
         products.forEach(({ node }) => {
           const path = node.frontmatter.path;
-          console.log("--------------------------------------------------");
-          console.log(node);
           const dir = node.parent.dir;
 
           createPage({
