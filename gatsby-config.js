@@ -21,11 +21,15 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
+        tableOfContents: {
+          heading: null,
+          maxDepth: 6,
+        },
         plugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 750,
+              maxWidth: 650,
               quality: 90,
               linkImagesToOriginal: true,
             },

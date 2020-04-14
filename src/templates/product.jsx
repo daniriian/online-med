@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import React, { useState, useEffect } from "react";
+import { graphql } from "gatsby";
+import Img from "gatsby-image";
 
-import TagsBlock from '../components/TagsBlock';
+import TagsBlock from "../components/TagsBlock";
 
-import './product.scss';
-import './product_responsive.scss';
+import "./product.scss";
+import "./product_responsive.scss";
 
 const Product = ({ data, pageContext }) => {
   const fdata = data.markdownRemark;
-  // console.log(data.allFile.edges);
+
+  const desc = fdata.frontmatter.description;
+  console.log(desc);
 
   const [activeThumb, setActiveThumb] = useState(0);
 
@@ -49,7 +51,7 @@ const Product = ({ data, pageContext }) => {
                       <div
                         key={index}
                         className={`details_image_thumbnail ${
-                          index === activeThumb ? 'active' : ''
+                          index === activeThumb ? "active" : ""
                         }`}
                         onClick={() => handleClick(index)}
                       >
@@ -77,11 +79,9 @@ const Product = ({ data, pageContext }) => {
                   <span>In Stoc</span>
                 </div>
                 <div className="details_text">
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: data.markdownRemark.excerpt,
-                    }}
-                  ></p>
+                  {desc.map((el, index) => (
+                    <p key={index}>{el}</p>
+                  ))}
                 </div>
 
                 {/*Product Quantity*/}
@@ -158,9 +158,7 @@ const Product = ({ data, pageContext }) => {
               <div className="description_title_container">
                 <div className="description_title">Descriere</div>
                 <div className="reviews_title">
-                  <a href="#">
-                    Reviews <span>(1)</span>
-                  </a>
+                  <a href="#">Specificatii</a>
                 </div>
               </div>
               <div className="description_text">
@@ -193,7 +191,7 @@ export const query = graphql`
         node {
           relativePath
           childImageSharp {
-            fluid(maxWidth: 1000, maxHeight: 1000) {
+            fluid(maxWidth: 500, maxHeight: 350) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -202,11 +200,12 @@ export const query = graphql`
     }
     markdownRemark(frontmatter: { path: { eq: $pathSlug } }) {
       html
-      excerpt(pruneLength: 120)
+      excerpt(pruneLength: 400)
       frontmatter {
         path
         tags
         title
+        description
       }
     }
   }

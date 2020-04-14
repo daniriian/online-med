@@ -1,12 +1,12 @@
-const path = require('path');
+const path = require("path");
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const productTemplate = path.resolve('src/templates/product.jsx');
-    const tagPage = path.resolve('src/components/tags/tags.jsx');
-    const tagProducts = path.resolve('src/templates/tag.jsx');
+    const productTemplate = path.resolve("src/templates/product.jsx");
+    const tagPage = path.resolve("src/components/tags/tags.jsx");
+    const tagProducts = path.resolve("src/templates/tag.jsx");
 
     resolve(
       graphql(`
@@ -18,6 +18,7 @@ exports.createPages = ({ graphql, actions }) => {
                   path
                   tags
                   title
+                  description
                 }
                 html
                 excerpt(pruneLength: 20)
