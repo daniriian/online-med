@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: "Online Medical",
+    title: 'Online Medical',
     description:
-      "Bine ati venit pe site-ul nostru dedicat echipamentelor medicale.",
-    author: "Daniel RT",
+      'Bine ati venit pe site-ul nostru dedicat echipamentelor medicale.',
+    author: 'Daniel RT',
   },
 
   plugins: [
@@ -14,6 +14,13 @@ module.exports = {
       options: {
         name: `products`,
         path: `${__dirname}/content/products`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `carousel-imgs`,
+        path: `${__dirname}/content/assets/images`,
       },
     },
     `gatsby-transformer-remark`,
