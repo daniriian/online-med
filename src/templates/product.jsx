@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import React, { useState, useEffect } from 'react';
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
-import TagsBlock from "../components/TagsBlock";
+import TagsBlock from '../components/TagsBlock';
+import Layout from '../layouts/index';
 
-import "./product.scss";
-import "./product_responsive.scss";
+import './product.scss';
+import './product_responsive.scss';
 
 const Product = ({ data, pageContext }) => {
   const fdata = data.markdownRemark;
@@ -20,7 +21,7 @@ const Product = ({ data, pageContext }) => {
   };
 
   return (
-    <div>
+    <Layout>
       <h1>{data.markdownRemark.frontmatter.title}</h1>
       <TagsBlock list={data.markdownRemark.frontmatter.tags || []} />
       {/* <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}></div> */}
@@ -51,7 +52,7 @@ const Product = ({ data, pageContext }) => {
                       <div
                         key={index}
                         className={`details_image_thumbnail ${
-                          index === activeThumb ? "active" : ""
+                          index === activeThumb ? 'active' : ''
                         }`}
                         onClick={() => handleClick(index)}
                       >
@@ -176,7 +177,7 @@ const Product = ({ data, pageContext }) => {
       {/*Products*/}
 
       {/*------------------------------*/}
-    </div>
+    </Layout>
   );
 };
 
@@ -191,7 +192,7 @@ export const query = graphql`
         node {
           relativePath
           childImageSharp {
-            fluid(maxWidth: 500, maxHeight: 350) {
+            fluid(maxWidth: 500, maxHeight: 380) {
               ...GatsbyImageSharpFluid
             }
           }

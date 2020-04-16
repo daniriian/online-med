@@ -28,22 +28,21 @@ description:
   - 24 hour log
   - Set VTBI over time
 
-Specificatii
-
-    Max. infusion rate: 0.1 - 1200 ml/h
-    Max. bolus rate: 10 - 1200 ml/h
-    Critical volume: 0.5 ml with a 50 ml syringe
-    Purge specifications: Max. rate 100 - 500 ml/h
-    Purge volume range: 0.5 - 5 ml
-    Volume to be infused: 0.1 - 100 ml
-    KVO rate: 0.1 - 2.5 ml/h
-    Accuracy: ± 2%
-    Battery type: Rechargeable sealed NiMH (charges automatically when connected via AC)
-    Battery life: > 6 hrs from fully charged at 5 ml/h
-    Battery charge time: 2.5 hrs from discharge to 90%
-    Occlusion settings: 11 levels from L0 - L10
-    AC power requirements: 115 - 230 VAC, 50/60 Hz, 20 VA
-    Weight: 2.7 kgs
-    Dimensions: 117h x 310w x 200d mm
+## Specificatii
+  - Max. infusion rate: 0.1 - 1200 ml/h
+  - Max. bolus rate: 10 - 1200 ml/h
+  - Critical volume: 0.5 ml with a 50 ml syringe
+  - Purge specifications: Max. rate 100 - 500 ml/h
+  - Purge volume range: 0.5 - 5 ml
+  - Volume to be infused: 0.1 - 100 ml
+  - KVO rate: 0.1 - 2.5 ml/h
+  - Accuracy: ± 2%
+  - Battery type: Rechargeable sealed NiMH (charges automatically when connected via AC)
+  - Battery life: > 6 hrs from fully charged at 5 ml/h
+  - Battery charge time: 2.5 hrs from discharge to 90%
+  - Occlusion settings: 11 levels from L0 - L10
+  - AC power requirements: 115 - 230 VAC, 50/60 Hz, 20 VA
+  - Weight: 2.7 kgs
+  - Dimensions: 117h x 310w x 200d mm
 
 #### Dispozitivul are software în limba română, așa încât alarmele și mesajele de atenționare sunt afișate tot în limba română

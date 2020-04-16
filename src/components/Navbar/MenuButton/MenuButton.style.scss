@@ -1,0 +1,29 @@
+.hamburger {
+  //   border: 1px solid black;
+  border: none;
+  background: transparent;
+  width: 44px;
+  height: 44px;
+  display: inline-block;
+  margin-left: auto;
+  z-index: 1000;
+
+  @media screen and (min-width: 800px) {
+    display: none;
+  }
+}
+
+.bars {
+  height: 70%;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.button-bar {
+  width: 30px;
+  height: 4px;
+  background-color: white;
+}
