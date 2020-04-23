@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: 'Online Medical',
+    title: "Online Medical",
     description:
-      'Bine ati venit pe site-ul nostru dedicat echipamentelor medicale.',
-    author: 'Daniel RT',
+      "Bine ati venit pe site-ul nostru dedicat echipamentelor medicale.",
+    author: "Daniel RT",
   },
 
   plugins: [
@@ -28,15 +28,11 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        tableOfContents: {
-          heading: null,
-          maxDepth: 6,
-        },
         plugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 650,
+              maxWidth: 1200,
               quality: 90,
               linkImagesToOriginal: true,
             },
@@ -45,5 +41,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-components`,
   ],
 };
