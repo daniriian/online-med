@@ -2,6 +2,7 @@
 path: "/alaris-cc"
 title: "Injectomat Alaris CC"
 tags: ["Injectomat", "Alaris", "pompa infuzie automata"]
+main_image: "details_3.jpg"
 description:
   - The Alaris® GH syringe pump is intelligent and highly responsive and delivers drugs in the safest possible way.
   - It has a large easy to read display, intuitive keyboard, alarm beacon and on-screen drug labelling.

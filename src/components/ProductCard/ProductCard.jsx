@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
+import Img from 'gatsby-image';
 
-const ProductCard = ({ cardTitle }) => {
+const ProductCard = ({ cardTitle, fluidImg, altImg }) => {
   return (
-    <div className="card" style={{ width: "18rem" }}>
-      <img className="card-img-top" src="..." alt="Card image cap"></img>
+    <div className="card" style={{ width: '20rem' }}>
+      <Img fluid={fluidImg} alt={altImg} />
       <div className="card-body">
         <h5 className="card-title">{cardTitle}</h5>
         <p className="card-text">

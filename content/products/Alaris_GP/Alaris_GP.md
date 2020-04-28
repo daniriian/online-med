@@ -1,13 +1,11 @@
 ---
-path: "/alaris-gh"
-title: "Injectomat Alaris GH"
-tags: ["Injectomat", "Alaris", "pompa infuzie automata"]
-main_image: "1182387.jpg"
+path: "/alaris-gp"
+title: "Infuziomat Alaris GP"
+tags: ["Infuziomat", "Alaris", "pompa infuzie automata"]
+main_image: "alarisGP_Plus.jpg"
 description:
-  - The Alaris® GH syringe pump is intelligent and highly responsive and delivers drugs in the safest possible way.
-  - It has a large easy to read display, intuitive keyboard, alarm beacon and on-screen drug labelling.
-  - It can be used with the Guardrails® Suite of safety software providing the power to identify, track and prevent many of the harmful IV medication errors.
-  - Infusion rate - 0.1 - 1200 ml/h (dependent upon syringe)
+  - The Alaris GP Plus volumetric pump offers a range of features suited to drug therapy, blood transfusions and parenteral feeding, including a large, clear display, intuitive operation, and a wide range of specialty sets.
+  - It provides a versatile and flexible platform for infusion therapy which is suitable across a broad range of applications, while its ergonomic casing allows for ease of transportation, cleaning, and a variety of mounting methods
 ---
 
 - Simple to use and operate
