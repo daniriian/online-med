@@ -33,14 +33,18 @@ export default ({ data }) => {
 
       <section className="product-section">
         <div className="container">
-          {edges.map(({ node }) => (
-            <div key={node.id}>
-              <ProductCard
-                cardTitle={node.frontmatter.title}
-                fluidImg={node.frontmatter.main_image.childImageSharp.fluid}
-                altImg=""
-              />
-              {/* <Link to={node.frontmatter.path}>
+          {edges.map(({ node }) => {
+            console.log(node.excerpt);
+            return (
+              <div key={node.id}>
+                <ProductCard
+                  cardTitle={node.frontmatter.title}
+                  fluidImg={node.frontmatter.main_image.childImageSharp.fluid}
+                  altImg=""
+                  productPage={node.frontmatter.path}
+                  excerpt={node.excerpt}
+                />
+                {/* <Link to={node.frontmatter.path}>
                 <h3>titlu: {node.frontmatter.title}</h3>
               </Link>
               {node.frontmatter.tags.map((tag, index) => (
@@ -49,8 +53,9 @@ export default ({ data }) => {
 
               <p>Taguri {node.frontmatter.tags}</p>
               <p>Excerpt: {node.excerpt}</p> */}
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
       </section>
     </Layout>
@@ -67,6 +72,7 @@ export const query = graphql`
             title
             path
             tags
+            description
             main_image {
               childImageSharp {
                 fluid(maxWidth: 500, maxHeight: 380) {
@@ -75,7 +81,7 @@ export const query = graphql`
               }
             }
           }
-          excerpt
+          excerpt(pruneLength: 120)
         }
       }
     }
