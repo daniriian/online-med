@@ -1,16 +1,17 @@
-import React from "react";
-import { graphql, StaticQuery, Link } from "gatsby";
+import React from 'react';
+import { graphql, StaticQuery, Link } from 'gatsby';
 
-import Headroom from "react-headroom";
-import Navbar from "../components/Navbar/Navbar.component";
+import Headroom from 'react-headroom';
+import Navbar from '../components/Navbar/Navbar.component';
+import Footer from '../components/Footer/Footer.jsx';
 
-import "./index.scss";
+import './index.scss';
 
 const menuLinks = [
-  { address: "/", name: "Acasa" },
-  { address: "/produse", name: "Produse" },
-  { address: "/despre", name: "Despre" },
-  { address: "/contact", name: "contact" },
+  { address: '/', name: 'Acasa' },
+  { address: '/produse', name: 'Produse' },
+  { address: '/despre', name: 'Despre' },
+  { address: '/contact', name: 'contact' },
 ];
 
 export default ({ children }) => (
@@ -25,7 +26,7 @@ export default ({ children }) => (
       }
     `}
     render={(data) => {
-      console.log(data);
+      // console.log(data);
 
       return (
         <div>
@@ -34,6 +35,8 @@ export default ({ children }) => (
           </Headroom>
 
           {children}
+
+          <Footer />
         </div>
       );
     }}

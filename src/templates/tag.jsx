@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 
 const Tag = ({ pageContext }) => {
   const { products, tagName } = pageContext;
-  console.log(pageContext);
+  // console.log(pageContext);
   return (
     <div>
       <div>Products from {`${tagName}`}</div>

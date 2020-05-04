@@ -1,0 +1,13 @@
+.card-text {
+  min-height: 6rem;
+}
+
+.btn-primary {
+  background-color: #1bd49d;
+  border-color: #1bd49d;
+
+  &:hover {
+    background-color: #12a77a;
+    border-color: #12a77a;
+  }
+}

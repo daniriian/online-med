@@ -4,12 +4,11 @@ import { graphql, Link } from 'gatsby';
 import { Carousel } from 'react-bootstrap';
 
 import BgImage from '../components/BgImage/BgImage';
-import ProductCard from '../components/ProductCard/ProductCard';
+import Products from '../components/Products/Products';
 
 import './index.scss';
 
 export default ({ data }) => {
-  const { edges } = data.allMarkdownRemark;
   return (
     <Layout>
       <Carousel>
@@ -29,62 +28,13 @@ export default ({ data }) => {
         ))}
       </Carousel>
 
-      <h1>Welcome to Online Medical's Shop</h1>
-
-      <section className="product-section">
-        <div className="container">
-          {edges.map(({ node }) => {
-            console.log(node.excerpt);
-            return (
-              <div key={node.id}>
-                <ProductCard
-                  cardTitle={node.frontmatter.title}
-                  fluidImg={node.frontmatter.main_image.childImageSharp.fluid}
-                  altImg=""
-                  productPage={node.frontmatter.path}
-                  excerpt={node.excerpt}
-                />
-                {/* <Link to={node.frontmatter.path}>
-                <h3>titlu: {node.frontmatter.title}</h3>
-              </Link>
-              {node.frontmatter.tags.map((tag, index) => (
-                <span key={index}>{tag}, </span>
-              ))}
-
-              <p>Taguri {node.frontmatter.tags}</p>
-              <p>Excerpt: {node.excerpt}</p> */}
-              </div>
-            );
-          })}
-        </div>
-      </section>
+      <Products />
     </Layout>
   );
 };
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { order: ASC, fields: frontmatter___title }) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            path
-            tags
-            description
-            main_image {
-              childImageSharp {
-                fluid(maxWidth: 500, maxHeight: 380) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-          excerpt(pruneLength: 120)
-        }
-      }
-    }
     allFile(filter: { absolutePath: { regex: "/assets/" } }) {
       edges {
         node {

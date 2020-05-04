@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import TagsBlock from '../TagsBlock';
 
 const Tags = ({ pageContext }) => {
-  console.log(pageContext.tags);
+  // console.log(pageContext.tags);
   const { tags } = pageContext;
 
   return (
