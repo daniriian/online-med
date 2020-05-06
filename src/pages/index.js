@@ -1,10 +1,10 @@
 import React from 'react';
 import Layout from '../layouts/index';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import { Carousel } from 'react-bootstrap';
 
 import BgImage from '../components/BgImage/BgImage';
-import Products from '../components/Products/Products';
+import ProductList from '../components/ProductList/ProductList';
 
 import './index.scss';
 
@@ -28,7 +28,7 @@ export default ({ data }) => {
         ))}
       </Carousel>
 
-      <Products />
+      <ProductList title="Produse" />
     </Layout>
   );
 };

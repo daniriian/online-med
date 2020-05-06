@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 import TagsBlock from '../components/TagsBlock';
-import ProductCard from '../components/ProductCard/ProductCard';
+import ProductList from '../components/ProductList/ProductList';
 import Layout from '../layouts/index';
 
 import './product.scss';
@@ -21,12 +21,6 @@ const Product = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      {/* <h1>{data.markdownRemark.frontmatter.title}</h1>
-      <TagsBlock list={data.markdownRemark.frontmatter.tags || []} /> */}
-      {/* <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}></div> */}
-
-      {/*Product Details*/}
-
       <div className="product_details">
         <div className="container">
           <div className="row details_row">
@@ -175,12 +169,11 @@ const Product = ({ data, pageContext }) => {
 
       <div className="recomended container">
         <hr></hr>
-        <h1>Produse recomandate</h1>
-        {console.log(recomended_products)}
+        <ProductList
+          title="Produse recomandate"
+          tagList={data.markdownRemark.frontmatter.tags}
+        />
       </div>
-      {/*Products*/}
-
-      {/*------------------------------*/}
     </Layout>
   );
 };

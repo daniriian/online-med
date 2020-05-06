@@ -3,11 +3,9 @@ import { graphql, StaticQuery } from 'gatsby';
 
 import ProductCard from '../ProductCard/ProductCard';
 
-import './Products.scss';
+import './ProductList.scss';
 
-const Products = () => {
-  //   const { edges } = data.allMarkdownRemark;
-
+const Products = ({ title, tagList }) => {
   return (
     <StaticQuery
       query={graphql`
@@ -48,14 +46,25 @@ const Products = () => {
         }
       `}
       render={(data) => {
-        const { edges } = data.allMarkdownRemark;
+        // const { edges } = data.allMarkdownRemark;
+        let edges = [];
+        if (!tagList) {
+          //daca nu exista taguri ...
+          edges = data.allMarkdownRemark.edges;
+        } else {
+          // daca exista taguri ...
+          //filtram lista de produse dupa tagurile fiecarui produs
+          edges = data.allMarkdownRemark.edges.filter((edge) =>
+            edge.node.frontmatter.tags.some((r) => tagList.indexOf(r) > 0)
+          );
+        }
+
         return (
           <section className="container">
-            <h1 className="title">Produse</h1>
+            <h1 className="title">{title}</h1>
 
             <div className="container-primary">
               {edges.map(({ node }) => {
-                // console.log(node.excerpt);
                 return (
                   <div key={node.id} className="item">
                     <ProductCard
