@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 
-import TagsBlock from '../components/TagsBlock';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import TagsBlock from '../components/TagsBlock';
 import ProductList from '../components/ProductList/ProductList';
 import Layout from '../layouts/index';
+
+import '../utils/fontawesome';
 
 import './product.scss';
 import './product_responsive.scss';
 
-const Product = ({ data, pageContext }) => {
+const Product = ({ data }) => {
   const fdata = data.markdownRemark;
   const desc = fdata.frontmatter.description;
   const [activeThumb, setActiveThumb] = useState(0);
 
-  const recomended_products = data.markdownRemark.frontmatter.tags || [];
+  // const recomended_products = data.markdownRemark.frontmatter.tags || [];
   const handleClick = (index) => {
     setActiveThumb(index);
   };
@@ -36,7 +39,7 @@ const Product = ({ data, pageContext }) => {
                     alt={data.markdownRemark.frontmatter.title}
                   />
                   <div className="product_extra product_new">
-                    <a href="categories.html">NOU</a>
+                    <Link to="/">SALE</Link>
                   </div>
                 </div>
                 <div className="details_image_thumbnails d-flex flex-row align-items-start justify-content-between">
@@ -82,38 +85,39 @@ const Product = ({ data, pageContext }) => {
                 <div className="product_quantity_container">
                   <div className="product_quantity clearfix">
                     <span>Qty</span>
-                    <div
+                    <input
                       className="qty_input"
                       id="quantity_input"
                       type="text"
                       pattern="[0-9]*"
                       value="1"
-                    >
-                      <div className="quantity_buttons">
-                        <div
-                          id="quantity_inc_button"
-                          className="quantity_inc quantity_control"
-                        >
-                          <i
+                    ></input>
+                    <div className="quantity_buttons">
+                      <div
+                        id="quantity_inc_button"
+                        className="quantity_inc quantity_control"
+                      >
+                        {/* <i
                             className="fa fa-chevron-up"
                             aria-hidden="true"
-                          ></i>
-                        </div>
-                        <div
-                          id="quantity_dec_button"
-                          className="quantity_dec quantity_control"
-                        >
-                          <i
+                          ></i> */}
+                        <FontAwesomeIcon icon={['fas', 'chevron-up']} />
+                      </div>
+                      <div
+                        id="quantity_dec_button"
+                        className="quantity_dec quantity_control"
+                      >
+                        {/* <i
                             className="fa fa-chevron-down"
                             aria-hidden="true"
-                          ></i>
-                        </div>
+                          ></i> */}
+                        <FontAwesomeIcon icon={['fas', 'chevron-down']} />
                       </div>
                     </div>
                   </div>
 
                   <div className="button cart_button">
-                    <a href="#">Add to cart</a>
+                    <a href="#">Adauga în coş</a>
                   </div>
                 </div>
 
