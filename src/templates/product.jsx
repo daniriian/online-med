@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 
@@ -16,10 +16,21 @@ const Product = ({ data }) => {
   const fdata = data.markdownRemark;
   const desc = fdata.frontmatter.description;
   const [activeThumb, setActiveThumb] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   // const recomended_products = data.markdownRemark.frontmatter.tags || [];
   const handleClick = (index) => {
     setActiveThumb(index);
+  };
+
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
   };
 
   return (
@@ -90,28 +101,26 @@ const Product = ({ data }) => {
                       id="quantity_input"
                       type="text"
                       pattern="[0-9]*"
-                      value="1"
+                      value={quantity}
                     ></input>
                     <div className="quantity_buttons">
                       <div
                         id="quantity_inc_button"
                         className="quantity_inc quantity_control"
                       >
-                        {/* <i
-                            className="fa fa-chevron-up"
-                            aria-hidden="true"
-                          ></i> */}
-                        <FontAwesomeIcon icon={['fas', 'chevron-up']} />
+                        <FontAwesomeIcon
+                          icon={['fas', 'chevron-up']}
+                          onClick={increaseQuantity}
+                        />
                       </div>
                       <div
                         id="quantity_dec_button"
                         className="quantity_dec quantity_control"
                       >
-                        {/* <i
-                            className="fa fa-chevron-down"
-                            aria-hidden="true"
-                          ></i> */}
-                        <FontAwesomeIcon icon={['fas', 'chevron-down']} />
+                        <FontAwesomeIcon
+                          icon={['fas', 'chevron-down']}
+                          onClick={decreaseQuantity}
+                        />
                       </div>
                     </div>
                   </div>
