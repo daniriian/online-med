@@ -1,14 +1,15 @@
 module.exports = {
   siteMetadata: {
-    title: "Online Medical",
+    title: 'Online Medical',
     description:
-      "Bine ati venit pe site-ul nostru dedicat echipamentelor medicale.",
-    author: "Daniel RT",
+      'Bine ati venit pe site-ul nostru dedicat echipamentelor medicale.',
+    author: 'Daniel RT',
   },
 
   plugins: [
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

@@ -289,12 +289,6 @@ section {
   zoom: 1;
 }
 
-.product_details {
-  width: 100%;
-  background: #ffffff;
-  z-index: 2;
-}
-
 .details_row {
   margin-top: 95px;
 }
@@ -631,4 +625,12 @@ section {
 
 .description_text {
   margin-top: 44px;
+}
+
+.noselect {
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }

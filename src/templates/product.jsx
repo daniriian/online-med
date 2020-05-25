@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { graphql, Link } from 'gatsby';
+import styled from 'styled-components';
+
 import Img from 'gatsby-image';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,6 +13,13 @@ import '../utils/fontawesome';
 
 import './product.scss';
 import './product_responsive.scss';
+
+// styled components
+const ProductDetails = styled.div`
+  width: 100%;
+  background: #ffffff;
+  z-index: 2;
+`;
 
 const Product = ({ data }) => {
   const fdata = data.markdownRemark;
@@ -35,7 +44,7 @@ const Product = ({ data }) => {
 
   return (
     <Layout>
-      <div className="product_details">
+      <ProductDetails>
         <div className="container">
           <div className="row details_row">
             {/*Product Image*/}
@@ -94,7 +103,7 @@ const Product = ({ data }) => {
 
                 {/*Product Quantity*/}
                 <div className="product_quantity_container">
-                  <div className="product_quantity clearfix">
+                  <div className="product_quantity clearfix noselect">
                     <span>Qty</span>
                     <input
                       className="qty_input"
@@ -178,7 +187,7 @@ const Product = ({ data }) => {
             </div>
           </div>
         </div>
-      </div>
+      </ProductDetails>
 
       <div className="recomended container">
         <hr></hr>
