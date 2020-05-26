@@ -7,4 +7,22 @@ import {
   faChevronDown,
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(fas, faCoffee, faChevronUp, faChevronDown);
+import {
+  fab,
+  faFacebook,
+  pinterest,
+  faInstagram,
+  twitter,
+} from '@fortawesome/free-brands-svg-icons';
+
+library.add(
+  fas,
+  fab,
+  faFacebook,
+  faInstagram,
+  twitter,
+  pinterest,
+  faCoffee,
+  faChevronUp,
+  faChevronDown
+);

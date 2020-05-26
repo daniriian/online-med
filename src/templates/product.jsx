@@ -145,22 +145,22 @@ const Product = ({ data }) => {
                   <ul>
                     <li>
                       <a href="#">
-                        <i className="fa fa-pinterest" aria-hidden="true"></i>
+                        <FontAwesomeIcon icon={['fab', 'pinterest']} />
                       </a>
                     </li>
                     <li>
                       <a href="#">
-                        <i className="fa fa-instagram" aria-hidden="true"></i>
+                        <FontAwesomeIcon icon={['fab', 'instagram']} />
                       </a>
                     </li>
                     <li>
                       <a href="#">
-                        <i className="fa fa-facebook" aria-hidden="true"></i>
+                        <FontAwesomeIcon icon={['fab', 'facebook']} />
                       </a>
                     </li>
                     <li>
                       <a href="#">
-                        <i className="fa fa-twitter" aria-hidden="true"></i>
+                        <FontAwesomeIcon icon={['fab', 'twitter']} />
                       </a>
                     </li>
                   </ul>
