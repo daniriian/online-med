@@ -26,6 +26,7 @@ const Product = ({ data }) => {
   const desc = fdata.frontmatter.description;
   const [activeThumb, setActiveThumb] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [activeTab, setActiveTab] = useState(0);
 
   // const recomended_products = data.markdownRemark.frontmatter.tags || [];
   const handleClick = (index) => {
@@ -172,9 +173,17 @@ const Product = ({ data }) => {
           <div className="row description_row">
             <div className="col">
               <div className="description_title_container">
-                <div className="description_title">Descriere</div>
-                <div className="reviews_title">
-                  <a href="#">Specificatii</a>
+                <div
+                  className={`tab ${!activeTab ? 'tab_active' : ''}`}
+                  onClick={() => setActiveTab(0)}
+                >
+                  Descriere
+                </div>
+                <div
+                  className={`tab ${activeTab ? 'tab_active' : ''}`}
+                  onClick={() => setActiveTab(1)}
+                >
+                  Specificaţii
                 </div>
               </div>
               <div className="description_text">

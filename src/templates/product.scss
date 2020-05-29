@@ -595,17 +595,31 @@ section {
 .description_row {
   margin-top: 91px;
 }
+// ---------------------
 
-.description_title {
+.tab {
+  display: inline-block;
+  margin-right: 41px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #85838d;
+  -webkit-transition: all 200ms ease;
+  -moz-transition: all 200ms ease;
+  -ms-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  transition: all 200ms ease;
+
+  &:hover {
+    color: #1bd49d;
+    cursor: pointer;
+  }
+}
+
+.tab_active {
   display: inline-block;
   font-size: 24px;
   font-weight: 500;
-  color: #1b1b1b;
-}
-
-.reviews_title {
-  display: inline-block;
-  margin-left: 41px;
+  color: #1bd49d;
 }
 
 .reviews_title a {
@@ -622,6 +636,7 @@ section {
 .reviews_title a:hover {
   color: #1b1b1b;
 }
+// -------------------------------
 
 .description_text {
   margin-top: 44px;

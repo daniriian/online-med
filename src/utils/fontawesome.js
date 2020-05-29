@@ -10,19 +10,18 @@ import {
 import {
   fab,
   faFacebook,
-  pinterest,
+  faPinterest,
   faInstagram,
-  twitter,
+  faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
   fas,
   fab,
+  faChevronUp,
+  faChevronDown,
   faFacebook,
   faInstagram,
-  twitter,
-  pinterest,
-  faCoffee,
-  faChevronUp,
-  faChevronDown
+  faTwitter,
+  faPinterest
 );
