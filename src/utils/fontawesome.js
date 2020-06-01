@@ -1,11 +1,10 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 import {
   fas,
-  faCoffee,
   faChevronUp,
   faChevronDown,
-} from '@fortawesome/free-solid-svg-icons';
+} from "@fortawesome/free-solid-svg-icons";
 
 import {
   fab,
@@ -13,7 +12,7 @@ import {
   faPinterest,
   faInstagram,
   faTwitter,
-} from '@fortawesome/free-brands-svg-icons';
+} from "@fortawesome/free-brands-svg-icons";
 
 library.add(
   fas,

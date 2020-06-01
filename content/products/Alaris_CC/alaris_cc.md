@@ -1,8 +1,9 @@
 ---
-path: '/alaris-cc'
-title: 'Injectomat Alaris CC'
-tags: ['Injectomat', 'Alaris', 'pompa infuzie automata']
-main_image: 'alaris-cc.jpg'
+path: "/alaris-cc"
+title: "Injectomat Alaris CC"
+tags: ["Injectomat", "Alaris", "pompa infuzie automata"]
+linkedSpecs: "./specs.md"
+main_image: "alaris-cc.jpg"
 description:
   - Alaris® CC este o seringa inzestrata cu toate proprietatile necesare variatiilor de presiune si ingrijirea pacientilor in stare critica.
   - Pompa cu seringa Alaris CC ofera o solutie completa de infuzare intravenoasa si tranfuzie sangvina, asigurand monitorizarea duratei si preciziei  tratamentelor.

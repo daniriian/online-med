@@ -1,6 +1,5 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import TagsBlock from '../TagsBlock';
+import React from "react";
+import TagsBlock from "../TagsBlock";
 
 const Tags = ({ pageContext }) => {
   // console.log(pageContext.tags);

@@ -1,16 +1,19 @@
-import React from 'react';
-import { graphql, StaticQuery } from 'gatsby';
+import React from "react";
+import { graphql, StaticQuery } from "gatsby";
 
-import ProductCard from '../ProductCard/ProductCard';
+import ProductCard from "../ProductCard/ProductCard";
 
-import './ProductList.scss';
+import "./ProductList.scss";
 
 const Products = ({ title, tagList }) => {
   return (
     <StaticQuery
       query={graphql`
         query {
-          allMarkdownRemark(sort: { order: ASC, fields: frontmatter___title }) {
+          allMarkdownRemark(
+            filter: { frontmatter: { title: { ne: "specs" } } }
+            sort: { order: ASC, fields: frontmatter___title }
+          ) {
             edges {
               node {
                 id

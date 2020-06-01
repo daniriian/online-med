@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { graphql, Link } from 'gatsby';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import { graphql, Link } from "gatsby";
+import styled from "styled-components";
 
-import Img from 'gatsby-image';
+import Img from "gatsby-image";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import TagsBlock from '../components/TagsBlock';
-import ProductList from '../components/ProductList/ProductList';
-import Layout from '../layouts/index';
+import ProductList from "../components/ProductList/ProductList";
+import Layout from "../layouts/index";
 
-import '../utils/fontawesome';
+import "../utils/fontawesome";
 
-import './product.scss';
-import './product_responsive.scss';
+import "./product.scss";
+import "./product_responsive.scss";
 
 // styled components
 const ProductDetails = styled.div`
@@ -43,6 +43,9 @@ const Product = ({ data }) => {
     }
   };
 
+  console.log("___________________________________");
+  console.log(data);
+
   return (
     <Layout>
       <ProductDetails>
@@ -69,7 +72,7 @@ const Product = ({ data }) => {
                       <div
                         key={index}
                         className={`details_image_thumbnail ${
-                          index === activeThumb ? 'active' : ''
+                          index === activeThumb ? "active" : ""
                         }`}
                         onClick={() => handleClick(index)}
                       >
@@ -119,7 +122,7 @@ const Product = ({ data }) => {
                         className="quantity_inc quantity_control"
                       >
                         <FontAwesomeIcon
-                          icon={['fas', 'chevron-up']}
+                          icon={["fas", "chevron-up"]}
                           onClick={increaseQuantity}
                         />
                       </div>
@@ -128,7 +131,7 @@ const Product = ({ data }) => {
                         className="quantity_dec quantity_control"
                       >
                         <FontAwesomeIcon
-                          icon={['fas', 'chevron-down']}
+                          icon={["fas", "chevron-down"]}
                           onClick={decreaseQuantity}
                         />
                       </div>
@@ -146,22 +149,22 @@ const Product = ({ data }) => {
                   <ul>
                     <li>
                       <a href="#">
-                        <FontAwesomeIcon icon={['fab', 'pinterest']} />
+                        <FontAwesomeIcon icon={["fab", "pinterest"]} />
                       </a>
                     </li>
                     <li>
                       <a href="#">
-                        <FontAwesomeIcon icon={['fab', 'instagram']} />
+                        <FontAwesomeIcon icon={["fab", "instagram"]} />
                       </a>
                     </li>
                     <li>
                       <a href="#">
-                        <FontAwesomeIcon icon={['fab', 'facebook']} />
+                        <FontAwesomeIcon icon={["fab", "facebook"]} />
                       </a>
                     </li>
                     <li>
                       <a href="#">
-                        <FontAwesomeIcon icon={['fab', 'twitter']} />
+                        <FontAwesomeIcon icon={["fab", "twitter"]} />
                       </a>
                     </li>
                   </ul>
@@ -174,13 +177,13 @@ const Product = ({ data }) => {
             <div className="col">
               <div className="description_title_container">
                 <div
-                  className={`tab ${!activeTab ? 'tab_active' : ''}`}
+                  className={`tab ${!activeTab ? "tab_active" : ""}`}
                   onClick={() => setActiveTab(0)}
                 >
                   Descriere
                 </div>
                 <div
-                  className={`tab ${activeTab ? 'tab_active' : ''}`}
+                  className={`tab ${activeTab ? "tab_active" : ""}`}
                   onClick={() => setActiveTab(1)}
                 >
                   Specificaţii
@@ -192,6 +195,15 @@ const Product = ({ data }) => {
                     __html: data.markdownRemark.html,
                   }}
                 ></p>
+                <a
+                  href={
+                    window.location.href +
+                    data.markdownRemark.frontmatter.linkedSpecs
+                      .childMarkdownRemark.frontmatter.datasheet
+                  }
+                >
+                  Datasheet
+                </a>
               </div>
             </div>
           </div>
@@ -234,6 +246,14 @@ export const query = graphql`
         path
         tags
         title
+        linkedSpecs {
+          childMarkdownRemark {
+            frontmatter {
+              title
+              datasheet
+            }
+          }
+        }
         description
       }
     }

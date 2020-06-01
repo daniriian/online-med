@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import MenuButton from './MenuButton/MenuButton.component';
-import useDocumentScrollThrottled from '../DocumentScrollThrottle';
+import MenuButton from "./MenuButton/MenuButton.component";
+// import useDocumentScrollThrottled from '../DocumentScrollThrottle';
 
-import './Navbar.styles.scss';
+import "./Navbar.styles.scss";
 
 const Navbar = ({ logo, menuItems }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,7 +16,7 @@ const Navbar = ({ logo, menuItems }) => {
     <div className="navbar-container">
       <nav className="nav">
         <div
-          className={'overlay' + (menuOpen ? ' add_overlay' : '')}
+          className={"overlay" + (menuOpen ? " add_overlay" : "")}
           onClick={menuOpen ? inverseMenu : null}
         ></div>
 
@@ -25,7 +25,7 @@ const Navbar = ({ logo, menuItems }) => {
             <a href="/">{logo}</a>
           </div>
           <MenuButton onClick={inverseMenu} />
-          <div className={'menu' + (menuOpen ? ' menu_open' : '')}>
+          <div className={"menu" + (menuOpen ? " menu_open" : "")}>
             <ul>
               {menuItems.map((item, index) => (
                 <li className="menu-item" key={index}>

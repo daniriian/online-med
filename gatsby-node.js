@@ -11,12 +11,15 @@ exports.createPages = ({ graphql, actions }) => {
     resolve(
       graphql(`
         query {
-          allMarkdownRemark {
+          allMarkdownRemark(
+            filter: { frontmatter: { title: { ne: "specs" } } }
+          ) {
             edges {
               node {
                 frontmatter {
                   path
                   tags
+
                   title
                   description
                 }
